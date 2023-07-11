@@ -95,20 +95,19 @@ export class Player {
         return result
     }
 
-    onPlatform() {
-        let type = null
-        let playerHitBox = {x:this.x+15, y:this.y, width:this.width-30, height:this.height}
+     onPlatform() {
+        let type = null // empieza como null
+        let playerHitBox = {x:this.x+15, y:this.y, width:this.width-30, height:this.height} // selecciona el hitbox del player
 
         this.game.platforms.forEach((platform)=>{
 
-            const X_test = (playerHitBox.x > platform.x && playerHitBox.x < platform.x+platform.width)  || (playerHitBox.x+playerHitBox.width > platform.x && playerHitBox.x+playerHitBox.width < platform.x+platform.width)
+            const X_test = (playerHitBox.x > platform.x && playerHitBox.x < platform.x+platform.width)  || (playerHitBox.x+playerHitBox.width > platform.x && playerHitBox.x+playerHitBox.width < platform.x+platform.width) 
             const Y_test = (platform.y - (playerHitBox.y+playerHitBox.height) <= 0) && (platform.y - (playerHitBox.y+playerHitBox.height) >= -platform.height)
 
             if(X_test && Y_test) {
-                type = platform.type
+                type = platform.type // cambia el null por el tipo de plataforma (verde o marrón) 
             }
         })
       
         return type
     }
-}
